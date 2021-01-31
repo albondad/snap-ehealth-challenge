@@ -1,0 +1,76 @@
+/* GENERAL */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,700&display=swap');
+
+body {
+  margin: 0;
+  background-color: #fafafa;
+  font-family: "Roboto";
+  color: #999999;
+}
+
+
+/* CONTAINER */
+.Container {
+  border: 2px solid #eeeeee;
+  border-radius: 4px;
+  width: 50%;
+  margin: 64px auto auto;
+  background-color: #ffffff;
+}
+
+.ContainerHeader {
+  border-bottom: 2px solid #eeeeee;
+  padding: 32px;
+}
+
+.ContainerHeaderSection {
+  display: inline-block;
+  width: 50%;
+}
+
+.ContainerHeaderSection:not(:first-of-type) {
+  text-align: right;
+}
+
+.ContainerHeaderSectionPrimary {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.ContainerHeaderSectionSecondary {
+  margin-top: 4px;
+  font-size: 24px;
+}
+
+.ContainerBody {
+  padding: 32px;
+}
+
+
+/* TASK LIST */
+.TaskListControls {
+  display: flex;
+}
+
+.TaskListControlsInput {
+  flex-grow: 1;
+  border-color: #eeeeee;
+  border-style: solid;
+  border-radius: 4px;
+  margin-right: 16px;
+  padding-left: 8px;
+  padding-right: 8px;
+  color: #999999;
+}
+
+.TaskListControlsButton {
+  border-style: none;
+  border-radius: 4px;
+  background-color: #cccccc;
+  width: 128px;
+  height: 32px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
