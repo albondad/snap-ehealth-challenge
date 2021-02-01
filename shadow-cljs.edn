@@ -2,7 +2,6 @@
  :dependencies [[binaryage/devtools "1.0.2"]
                 [nrepl "0.8.3"]
                 [reagent "1.0.0"]]
- :jvmp-opts ["Xmx1G"]
  :builds       {:app {:target     :browser
                       :output-dir "public/js"
                       :asset-path "/js"
