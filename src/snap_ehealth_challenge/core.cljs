@@ -24,6 +24,12 @@
 (defn handle-task-list-controls-input-on-change []
   [event] (reset! task-list-controls-input-value event.target.value))
 
+(defn handle-task-list-list-item-checkbox-on-click []
+  (println "checkbox clicked"))
+
+(defn handle-task-list-list-item-delete-on-click []
+  (println "delete clicked"))
+
 
 ;; components
 (defn application []
@@ -31,7 +37,8 @@
     @tasks 
     handle-task-list-controls-input-on-change 
     handle-task-controls-button-on-click
-    handle-task-list-list-item-checkbox-on-click]])
+    handle-task-list-list-item-checkbox-on-click
+    handle-task-list-list-item-delete-on-click]])
 
 (defn container [body]
   [:div
@@ -47,17 +54,19 @@
 
 (defn task-list 
   [tasks 
-   handle-task-list-controls-input-on-change handle-task-controls-button-on-click 
-   handle-task-list-list-item-checkbox-on-click]
+   handle-task-list-controls-input-on-change 
+   handle-task-controls-button-on-click 
+   handle-task-list-list-item-checkbox-on-click
+   handle-task-list-list-item-delete-on-click]
   [:div {:class "TaskList"} 
     [:div {:class "TaskListControls"}
       [:input {:class "TaskListControlsInput" :value @task-list-controls-input-value :placeholder "task name" :on-change handle-task-list-controls-input-on-change}]
       [:button {:class "TaskListControlsButton" :on-click handle-task-controls-button-on-click} "Add"]]
   [:div {:class "TaskLisList"} (for [task tasks]
     [:div {:key (get task :id) :class "TaskListListItem"} 
-      [:div {:class (+ "TaskListListItemCheckbox" (if (get task :checked) " TaskListListItemCheckbox--Checked" ""))} ""]
+      [:div {:class (+ "TaskListListItemCheckbox" (if (get task :checked) " TaskListListItemCheckbox--Checked" "")) :on-click handle-task-list-list-item-checkbox-on-click } ""]
       [:div {:class "TaskListListItemValue"} (get task :value)]
-      [:div {:class "TaskListListItemDelete"} "delete"]])]])
+      [:div {:class "TaskListListItemDelete" :on-click handle-task-list-list-item-delete-on-click} "delete"]])]])
 
 
 ;; initialize app
