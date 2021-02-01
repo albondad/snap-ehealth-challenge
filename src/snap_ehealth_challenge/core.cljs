@@ -6,23 +6,30 @@
 
 ;;debugging
 
-
 ;; state variables
 (def empty-array [])
 (def tasks (r/atom []))
 (def task-list-controls-input-value (r/atom ""))
+(def progress (r/atom 50))
 
 
 ;; utility functions
 (defn create-id []
   (js/Date.now))
 
+(defn update-progress []
+  (def complete-tasks-count (count (remove nil? (concat [] (for [task @tasks] (if (= (get task :checked) true) 1))))))
+  (def tasks-count (count @tasks))
+  (reset! progress (* (/ complete-tasks-count tasks-count) 100)))
+
+
 
 ;; event handlers
 (defn handle-task-controls-button-on-click []
     (reset! tasks (concat @tasks [{:id (create-id) :checked false :value @task-list-controls-input-value}]))
     (println @tasks)
-    (reset! task-list-controls-input-value ""))
+    (reset! task-list-controls-input-value "")
+    (update-progress))
 
 (defn handle-task-list-controls-input-on-change []
   [event] (reset! task-list-controls-input-value event.target.value))
@@ -34,7 +41,7 @@
     (println new-tasks)
     (reset! tasks new-tasks)
     (println "checkbox clicked")
-    ))
+    (update-progress)))
 
 (defn handle-task-list-list-item-delete-on-click [id]
   (fn [] 
@@ -43,13 +50,13 @@
     (println new-tasks)
     (reset! tasks new-tasks)
     (println "delete clicked")
-    ))
+    (update-progress)))
 
 
 ;; components
 (defn application []
   [:div  
-    [pie-chart 90]
+    [pie-chart @progress]
     [container 
     [statistics]
     [task-list 
