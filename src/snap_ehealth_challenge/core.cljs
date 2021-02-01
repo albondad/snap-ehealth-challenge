@@ -24,11 +24,23 @@
 (defn handle-task-list-controls-input-on-change []
   [event] (reset! task-list-controls-input-value event.target.value))
 
-(defn handle-task-list-list-item-checkbox-on-click []
-  (println "checkbox clicked"))
+(defn handle-task-list-list-item-checkbox-on-click [id]
+  (fn [] 
+    (println id)
+    (def new-tasks (concat [] (for [task @tasks] (if (= id (get task :id)) {:id (get task :id) :checked (not (get task :checked)) :value (get task :value)} {:id (get task :id) :checked (get task :checked) :value (get task :value)}))))
+    (println new-tasks)
+    (reset! tasks new-tasks)
+    (println "checkbox clicked")
+    ))
 
-(defn handle-task-list-list-item-delete-on-click []
-  (println "delete clicked"))
+(defn handle-task-list-list-item-delete-on-click [id]
+  (fn [] 
+    (println id)
+    (def new-tasks (remove nil? (concat [] (for [task @tasks] (if (not (= id (get task :id))) {:id (get task :id) :checked (get task :checked) :value (get task :value)})))))
+    (println new-tasks)
+    (reset! tasks new-tasks)
+    (println "delete clicked")
+    ))
 
 
 ;; components
@@ -64,9 +76,9 @@
       [:button {:class "TaskListControlsButton" :on-click handle-task-controls-button-on-click} "Add"]]
   [:div {:class "TaskLisList"} (for [task tasks]
     [:div {:key (get task :id) :class "TaskListListItem"} 
-      [:div {:class (+ "TaskListListItemCheckbox" (if (get task :checked) " TaskListListItemCheckbox--Checked" "")) :on-click handle-task-list-list-item-checkbox-on-click } ""]
+      [:div {:class (+ "TaskListListItemCheckbox" (if (get task :checked) " TaskListListItemCheckbox--Checked" "")) :on-click (handle-task-list-list-item-checkbox-on-click (get task :id))} ""]
       [:div {:class "TaskListListItemValue"} (get task :value)]
-      [:div {:class "TaskListListItemDelete" :on-click handle-task-list-list-item-delete-on-click} "delete"]])]])
+      [:div {:class "TaskListListItemDelete" :on-click (handle-task-list-list-item-delete-on-click (get task :id))} "delete"]])]])
 
 
 ;; initialize app
