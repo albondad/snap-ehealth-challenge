@@ -20,7 +20,7 @@
 (defn update-progress []
   (def complete-tasks-count (count (remove nil? (concat [] (for [task @tasks] (if (= (get task :checked) true) 1))))))
   (def tasks-count (count @tasks))
-  (reset! progress (* (/ complete-tasks-count tasks-count) 100)))
+  (reset! progress (if (= tasks-count 0) 0 (* (/ complete-tasks-count tasks-count) 100))))
 
 
 
@@ -55,12 +55,11 @@
 
 ;; components
 (defn application []
-  [:div  
-    [pie-chart @progress]
+  [:div
     [container 
-    [statistics]
+    [statistics @progress]
     [task-list 
-      @tasks 
+      @tasks
       handle-task-list-controls-input-on-change 
       handle-task-controls-button-on-click
       handle-task-list-list-item-checkbox-on-click
@@ -79,12 +78,12 @@
     [:div {:class "ContainerBody"} statistics body]
     ])
 
-(defn statistics []
+(defn statistics [progress]
   [:div {:class "Statistics"} 
     [:div {:class "StatisticsSection"}  
       [:div {:class "StatisticsSectionContent"}
         [:div {:class "StatisticsSectionContentHeader"} "Completed"]
-        [:div {:class "StatisticsSectionContentBody"} "body"]]]
+        [:div {:class "StatisticsSectionContentBody"} [pie-chart progress]]]]
   [:div {:class "StatisticsSection"}  
       [:div {:class "StatisticsSectionContent"}
         [:div {:class "StatisticsSectionContentHeader"} "Word Count"]
@@ -100,7 +99,7 @@
         [:div {:class "PieChartLeftMask" :style {:transform (str "translateX(100%) rotate(" (* (/ (if (<= progress 50) 50 progress) 50) 180) "deg)")}}]]])
   
 (defn task-list 
-  [tasks 
+  [tasks
    handle-task-list-controls-input-on-change 
    handle-task-controls-button-on-click 
    handle-task-list-list-item-checkbox-on-click
