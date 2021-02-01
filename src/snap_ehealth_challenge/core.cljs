@@ -4,6 +4,9 @@
       [reagent.dom :as d]))
 
 
+;;debugging
+
+
 ;; state variables
 (def empty-array [])
 (def tasks (r/atom []))
@@ -45,14 +48,18 @@
 
 ;; components
 (defn application []
-  [container 
+  [:div  
+    [pie-chart 90]
+    [container 
     [statistics]
     [task-list 
       @tasks 
       handle-task-list-controls-input-on-change 
       handle-task-controls-button-on-click
       handle-task-list-list-item-checkbox-on-click
-      handle-task-list-list-item-delete-on-click]])
+      handle-task-list-list-item-delete-on-click]]
+  ]
+  )
 
 (defn container [statistics body]
   [:div
@@ -79,6 +86,13 @@
         [:div {:class "StatisticsSectionContentBody"} "body"]]]
         ]
         )
+
+  (defn pie-chart [progress]
+    [:div {:class "PieChart"}
+      [:div {:class "PieChartRight"}
+        [:div {:class "PieChartRightMask" :style {:transform (str "rotate(" (* (/ (if (> progress 50) 50 progress) 50) 180) "deg)")}}]]
+      [:div {:class "PieChartLeft" }
+        [:div {:class "PieChartLeftMask" :style {:transform (str "translateX(100%) rotate(" (* (/ (if (<= progress 50) 50 progress) 50) 180) "deg)")}}]]])
   
 (defn task-list 
   [tasks 
