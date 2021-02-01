@@ -63,6 +63,10 @@ body {
   color: #999999;
 }
 
+.TaskListControlsInput::placeholder {
+  color: #cccccc;
+}
+
 .TaskListControlsButton {
   border-style: none;
   border-radius: 4px;
@@ -73,4 +77,39 @@ body {
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
+}
+
+.TaskListListItem {
+  display: flex;
+  align-items: center;
+  border-color: #eeeeee;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 4px;
+  margin-top: 16px;
+  padding: 32px;
+}
+
+.TaskListListItemCheckbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: #eeeeee;
+  border-style: solid;
+  border-width: 2px;
+  margin-right: 32px;
+  width: 32px;
+  height: 32px;
+}
+
+.TaskListListItemCheckbox--Checked:after {
+  content: "+";
+  color: #cccccc;
+  font-family: arial;
+  font-size: 24px;
+  transform: rotate(45deg);
+}
+
+.TaskListListItemValue {
+  flex-grow: 1;
 }
