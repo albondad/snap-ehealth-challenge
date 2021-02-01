@@ -10,7 +10,7 @@
 (def empty-array [])
 (def tasks (r/atom []))
 (def task-list-controls-input-value (r/atom ""))
-(def progress (r/atom 50))
+(def progress (r/atom 0))
 
 
 ;; utility functions
@@ -64,9 +64,7 @@
       handle-task-list-controls-input-on-change 
       handle-task-controls-button-on-click
       handle-task-list-list-item-checkbox-on-click
-      handle-task-list-list-item-delete-on-click]]
-  ]
-  )
+      handle-task-list-list-item-delete-on-click]]])
 
 (defn container [statistics body]
   [:div
