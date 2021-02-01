@@ -45,14 +45,16 @@
 
 ;; components
 (defn application []
-  [container [task-list 
-    @tasks 
-    handle-task-list-controls-input-on-change 
-    handle-task-controls-button-on-click
-    handle-task-list-list-item-checkbox-on-click
-    handle-task-list-list-item-delete-on-click]])
+  [container 
+    [statistics]
+    [task-list 
+      @tasks 
+      handle-task-list-controls-input-on-change 
+      handle-task-controls-button-on-click
+      handle-task-list-list-item-checkbox-on-click
+      handle-task-list-list-item-delete-on-click]])
 
-(defn container [body]
+(defn container [statistics body]
   [:div
     {:class "Container"}
     [:div {:class "ContainerHeader"} 
@@ -62,8 +64,22 @@
       [:div {:class "ContainerHeaderSection"}
         [:div {:class "ContainerHeaderSectionPrimary"} "January 01, 2020"]
         [:div {:class "ContainerHeaderSectionSecondary"} "12:00 PM"]]]
-    [:div {:class "ContainerBody"} body]])
+    [:div {:class "ContainerBody"} statistics body]
+    ])
 
+(defn statistics []
+  [:div {:class "Statistics"} 
+    [:div {:class "StatisticsSection"}  
+      [:div {:class "StatisticsSectionContent"}
+        [:div {:class "StatisticsSectionContentHeader"} "Completed"]
+        [:div {:class "StatisticsSectionContentBody"} "body"]]]
+  [:div {:class "StatisticsSection"}  
+      [:div {:class "StatisticsSectionContent"}
+        [:div {:class "StatisticsSectionContentHeader"} "Word Count"]
+        [:div {:class "StatisticsSectionContentBody"} "body"]]]
+        ]
+        )
+  
 (defn task-list 
   [tasks 
    handle-task-list-controls-input-on-change 

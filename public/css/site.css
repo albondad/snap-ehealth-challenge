@@ -47,9 +47,43 @@ body {
 }
 
 
+/* STATISTICS */
+.Statistics {
+  display: flex;
+}
+
+.StatisticsSection {
+  flex-grow: 1;
+}
+
+.StatisticsSection:first-of-type {
+  padding-right: 8px;
+}
+
+.StatisticsSection:not(:first-of-type) {
+  padding-left: 8px;
+}
+
+.StatisticsSectionContent {
+  flex-grow: 1;
+  border: 2px solid #eeeeee;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.StatisticsSectionContentHeader {
+  font-weight: 700;
+}
+
+.StatisticsSectionContentBody {
+  margin-top: 16px;
+}
+
+
 /* TASK LIST */
 .TaskListControls {
   display: flex;
+  margin-top: 16px;
 }
 
 .TaskListControlsInput {
