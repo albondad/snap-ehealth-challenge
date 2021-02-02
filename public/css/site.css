@@ -8,6 +8,17 @@ body {
   color: #999999;
 }
 
+@keyframes FadeInAnimation {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 
 /* CONTAINER */
 .Container {
@@ -16,11 +27,22 @@ body {
   width: 50%;
   margin: 64px auto auto;
   background-color: #ffffff;
+  animation-name: ContainerAnimation;
+  animation-duration: 1.5s;
+}
+
+@keyframes ContainerAnimation {
+  from {transform: translateX(-100vw);}
+  to {transform: translateX(0%)}
 }
 
 .ContainerHeader {
   border-bottom: 2px solid #eeeeee;
   padding: 32px;
+  animation-name: FadeInAnimation;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-delay: 0.5s;
 }
 
 .ContainerHeaderSection {
@@ -50,6 +72,10 @@ body {
 /* STATISTICS */
 .Statistics {
   display: flex;
+  animation-name: FadeInAnimation;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-delay: 1s;
 }
 
 .StatisticsSection {
@@ -175,6 +201,10 @@ body {
 .TaskListControls {
   display: flex;
   margin-top: 16px;
+  animation-name: FadeInAnimation;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-delay: 1.5s;
 }
 
 .TaskListControlsInput {
