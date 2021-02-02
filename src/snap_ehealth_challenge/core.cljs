@@ -31,7 +31,6 @@
 ;; event handlers
 (defn handle-task-controls-button-on-click []
     (reset! tasks (concat @tasks [{:id (create-id) :checked false :value @task-list-controls-input-value}]))
-    (println @tasks)
     (reset! task-list-controls-input-value "")
     (update-progress))
 
@@ -39,21 +38,15 @@
   [event] (reset! task-list-controls-input-value event.target.value))
 
 (defn handle-task-list-list-item-checkbox-on-click [id]
-  (fn [] 
-    (println id)
+  (fn []
     (def new-tasks (concat [] (for [task @tasks] (if (= id (get task :id)) {:id (get task :id) :checked (not (get task :checked)) :value (get task :value)} {:id (get task :id) :checked (get task :checked) :value (get task :value)}))))
-    (println new-tasks)
     (reset! tasks new-tasks)
-    (println "checkbox clicked")
     (update-progress)))
 
 (defn handle-task-list-list-item-delete-on-click [id]
   (fn [] 
-    (println id)
     (def new-tasks (remove nil? (concat [] (for [task @tasks] (if (not (= id (get task :id))) {:id (get task :id) :checked (get task :checked) :value (get task :value)})))))
-    (println new-tasks)
     (reset! tasks new-tasks)
-    (println "delete clicked")
     (update-progress)))
 
 
