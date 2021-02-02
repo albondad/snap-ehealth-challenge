@@ -213,6 +213,7 @@ body {
   border-style: solid;
   border-radius: 4px;
   margin-right: 16px;
+  height: 32px;
   padding-left: 8px;
   padding-right: 8px;
   color: #999999;
@@ -267,4 +268,68 @@ body {
 
 .TaskListListItemValue {
   flex-grow: 1;
+}
+
+
+/* MEDIA QUERIES */
+@media (max-width: 800px) {
+  .Container {
+    width: calc(100% - 48px);
+  }
+}
+
+@media (max-width: 600px) {
+  .ContainerHeader {
+    padding: 16px
+  }
+
+  .ContainerHeaderSectionPrimary {
+    font-size: 12px;
+  }
+
+  .ContainerHeaderSectionSecondary {
+    font-size: 12px;
+  }
+
+  .ContainerBody {
+    padding: 16px
+  }
+
+  .Statistics {
+    flex-direction: column;
+  }
+
+  .StatisticsSection:first-of-type {
+    padding-right: 0px;
+  }
+  
+  .StatisticsSection:not(:first-of-type) {
+    padding-left: 0px;
+    margin-top: 16px;
+  }
+
+  .TaskListControls {
+    flex-direction: column;
+  }
+
+  .TaskListControlsInput {
+    margin-right: 0px;
+  }
+
+  .TaskListControlsButton {
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  .TaskListListItem {
+    padding: 8px;
+  }
+
+  .TaskListListItemCheckbox {
+    min-width: 16px;
+    max-width: 16px;
+    min-height: 16px;
+    max-height: 16px;
+    margin-right: 8px;
+  }
 }
