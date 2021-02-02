@@ -116,7 +116,7 @@
     [:div {:key (get task :id) :class "TaskListListItem"} 
       [:div {:class (+ "TaskListListItemCheckbox" (if (get task :checked) " TaskListListItemCheckbox--Checked" "")) :on-click (handle-task-list-list-item-checkbox-on-click (get task :id))} ""]
       [:div {:class "TaskListListItemValue"} (get task :value)]
-      [:div {:class "TaskListListItemDelete" :on-click (handle-task-list-list-item-delete-on-click (get task :id))} "delete"]])]])
+      [:div {:class "TaskListListItemDelete" :on-click (handle-task-list-list-item-delete-on-click (get task :id))} "DELETE"]])]])
 
 
 ;; initialize app
