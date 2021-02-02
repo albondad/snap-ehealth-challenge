@@ -130,6 +130,47 @@ body {
   transition: transform 1s;
 }
 
+
+/* BAR CHART */
+.BarChart {
+  height: 128px;
+  width: 100%;
+}
+
+.BarChartBody {
+  height: 75%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.BarChartBodyItem {
+  display: flex;
+  align-items: flex-end;
+  flex-grow: 1;
+  height: 100%;
+  background-color: #eeeeee;
+}
+
+.BarChartBodyItemFill {
+  flex-grow: 1;
+  background-color: #2EBAEE;
+}
+
+.BarChartBodyItem:not(:last-of-type) {
+  margin-right: 16px;
+}
+
+.BarChartFooter {
+  display: flex;
+  justify-content: flex-end;
+  height: 25%;
+}
+
+.BarChartFooterText {
+  margin-top: 16px;
+  height: 25%;
+}
+
 /* TASK LIST */
 .TaskListControls {
   display: flex;

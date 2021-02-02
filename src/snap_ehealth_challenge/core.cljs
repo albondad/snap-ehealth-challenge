@@ -5,6 +5,7 @@
 
 
 ;;debugging
+(println (count (clojure.string/split "test test" #"\s")))
 
 ;; state variables
 (def empty-array [])
@@ -57,7 +58,7 @@
 (defn application []
   [:div
     [container 
-    [statistics @progress]
+    [statistics @progress @tasks]
     [task-list 
       @tasks
       handle-task-list-controls-input-on-change 
@@ -75,10 +76,9 @@
       [:div {:class "ContainerHeaderSection"}
         [:div {:class "ContainerHeaderSectionPrimary"} "January 01, 2020"]
         [:div {:class "ContainerHeaderSectionSecondary"} "12:00 PM"]]]
-    [:div {:class "ContainerBody"} statistics body]
-    ])
+    [:div {:class "ContainerBody"} statistics body]])
 
-(defn statistics [progress]
+(defn statistics [progress tasks]
   [:div {:class "Statistics"} 
     [:div {:class "StatisticsSection"}  
       [:div {:class "StatisticsSectionContent"}
@@ -87,9 +87,7 @@
   [:div {:class "StatisticsSection"}  
       [:div {:class "StatisticsSectionContent"}
         [:div {:class "StatisticsSectionContentHeader"} "Word Count"]
-        [:div {:class "StatisticsSectionContentBody"} "body"]]]
-        ]
-        )
+        [:div {:class "StatisticsSectionContentBody"} [bar-chart tasks]]]]])
 
   (defn pie-chart [progress]
     [:div {:class "PieChart"}
@@ -97,6 +95,16 @@
         [:div {:class "PieChartRightMask" :style {:transform (str "rotate(" (* (/ (if (> progress 50) 50 progress) 50) 180) "deg)")}}]]
       [:div {:class "PieChartLeft" }
         [:div {:class "PieChartLeftMask" :style {:transform (str "translateX(100%) rotate(" (* (/ (if (<= progress 50) 50 progress) 50) 180) "deg)")}}]]])
+
+  (defn bar-chart [tasks]
+    [:div {:class "BarChart"} 
+      [:div {:class "BarChartBody"}
+        (for [task tasks] 
+          [:div {:key (get task :id) :class "BarChartBodyItem"}
+            [:div {:key (get task :id) :class "BarChartBodyItemFill" :style {:height (str (* (/ (count (clojure.string/split (get task :value) #"\s")) 20) 100) "%")}}]])]
+      [:div {:class "BarChartFooter"} 
+        [:div {:class "BarChartFooterText"} (str "Words: " (reduce + (concat [] (for [task tasks] (count (clojure.string/split (get task :value) #"\s"))))))]]])
+
   
 (defn task-list 
   [tasks
