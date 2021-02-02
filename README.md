@@ -18,7 +18,15 @@ Navigate to the repository directory and run `npm install` in the terminal to in
 **Step 3: Start Development Server**
 From the repository directory, run `npx shadow-cljs watch app` to start up a development server running on localhost:3000. Here you should be able to preview and interact with the task list application.
 
+## Preview Images
+gif preview of application
+![gif preview of application](https://i.imgur.com/HBWLN0z.gif%22%20title=%22source:%20imgur.com)
 
+image preview of application
+![image preview of application](https://i.imgur.com/EmWb2Hz.png)
+
+image preview of application in mobile dimensions
+![image preview of application in a mobile screen dimesions](https://i.imgur.com/TqDkMKX.png)
 ## Contact Me
 Thanks again for giving me this opportunity to take this test. Feel free to drop me a message if you want to contact me!
 
