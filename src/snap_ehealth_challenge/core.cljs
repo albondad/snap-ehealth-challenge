@@ -5,7 +5,6 @@
 
 
 ;;debugging
-(println (count (clojure.string/split "test test" #"\s")))
 
 ;; state variables
 (def empty-array [])
@@ -17,6 +16,10 @@
 ;; utility functions
 (defn create-id []
   (js/Date.now))
+
+(defn get-month []
+  (def months ["January" "Febuary" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December"])
+  (get months (.getMonth (js/Date.))))
 
 (defn update-progress []
   (def complete-tasks-count (count (remove nil? (concat [] (for [task @tasks] (if (= (get task :checked) true) 1))))))
@@ -74,8 +77,8 @@
         [:div {:class "ContainerHeaderSectionPrimary"} "Snap eHealth"]
         [:div {:class "ContainerHeaderSectionSecondary"} "Task Checklist"]]
       [:div {:class "ContainerHeaderSection"}
-        [:div {:class "ContainerHeaderSectionPrimary"} "January 01, 2020"]
-        [:div {:class "ContainerHeaderSectionSecondary"} "12:00 PM"]]]
+        [:div {:class "ContainerHeaderSectionPrimary"} (str (get-month) " " (.getDay (js/Date.)) ", " (.getFullYear (js/Date.)))]
+        [:div {:class "ContainerHeaderSectionSecondary"} (str (.getHours (js/Date.)) ":" (.getMinutes (js/Date.)) )]]]
     [:div {:class "ContainerBody"} statistics body]])
 
 (defn statistics [progress tasks]
