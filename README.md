@@ -1,21 +1,33 @@
+# Dashboard
 
-### Development mode
-```
-npm install
-npx shadow-cljs watch app
-```
-start a ClojureScript REPL
-```
-npx shadow-cljs browser-repl
-```
-### Building for production
+## Description
+This repository contains my solution to the Snap eHealth coding challenge which requires me to build a simple Task Checklist Web Application using **shadow-cljs** and **Reagent.**
 
-```
-npx shadow-cljs release app
-```
+## Requirements
+1. NPX ( as of writing this, I am using 6.14.4 )
+2. Node ( as of writing this I am using v12.16.3 )
+3. Java ( as of writing this I am using 1.8.0_0.261 )
+
+## Getting Started
+**Step 1:  Clone Repository**
+Navigate to the direcory where you want to clone the repository and run the command `git clone https://github.com/albondad/snap-ehealth-challenge.git`
+
+**Step 2:  Install Required Dependencies**
+Navigate to the repository directory and run `npm install` in the terminal to install all the required npm dependencies.
+
+**Step 3: Start Development Server**
+From the repository directory, run `npx shadow-cljs watch app` to start up a development server running on localhost:3000. Here you should be able to preview and interact with the task list application.
 
 
-steps
-1. install with lein
-2. create design
-3. build components
+## Contact Me
+Thanks again for giving me this opportunity to take this test. Feel free to drop me a message if you want to contact me!
+
+Portfolio: albondad.com
+Resume: resume.albondad.com
+LinkedIn: www.linkedin.com/in/albondad
+GitHub: github.com/albondad
+
+
+
+
+	
