@@ -35,8 +35,11 @@ image preview of application in mobile dimensions
 Thanks again for giving me this opportunity to take this test. Feel free to drop me a message if you want to contact me!
 
 Portfolio: albondad.com
+
 Resume: resume.albondad.com
+
 LinkedIn: www.linkedin.com/in/albondad
+
 GitHub: github.com/albondad
 
 
