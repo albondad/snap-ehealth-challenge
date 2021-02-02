@@ -71,7 +71,7 @@
         [:div {:class "ContainerHeaderSectionSecondary"} "Task Checklist"]]
       [:div {:class "ContainerHeaderSection"}
         [:div {:class "ContainerHeaderSectionPrimary"} (str (get-month) " " (.getDay (js/Date.)) ", " (.getFullYear (js/Date.)))]
-        [:div {:class "ContainerHeaderSectionSecondary"} (str (.getHours (js/Date.)) ":" (.getMinutes (js/Date.)) )]]]
+        [:div {:class "ContainerHeaderSectionSecondary"} "Welcome Back!"]]]
     [:div {:class "ContainerBody"} statistics body]])
 
 (defn statistics [progress tasks]
